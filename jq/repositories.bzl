@@ -49,6 +49,10 @@ def _jq_repo_impl(repository_ctx):
 
     file_url = "https://github.com/stedolan/jq/releases/download/jq-{}/jq-{}".format(repository_ctx.attr.jq_version, repository_ctx.attr.platform)
 
+    # TODO remove as soon as https://github.com/stedolan/jq/issues/2386 is resolved
+    if repository_ctx.attr.platform == "osx-arm64" and repository_ctx.attr.jq_version == "1.6":
+        file_url = "https://github.com/slamdev/rules_jq/releases/download/0.0.1/jq-osx-arm64"
+
     repository_ctx.report_progress("Downloading and extracting JQ toolchain")
     repository_ctx.download(
         url = file_url,
