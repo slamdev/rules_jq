@@ -49,12 +49,14 @@ jobs:
       - name: Build
         shell: bash
         env:
+          GITHUB_TOKEN: ${{ secrets.READONLY_TOKEN }}
           # Bazelisk will download bazel to here
           XDG_CACHE_HOME: ~/.cache/bazel-repo
         run: bazel --bazelrc=.github/workflows/ci.bazelrc --bazelrc=.bazelrc build ...
       - name: Test
         shell: bash
         env:
+          GITHUB_TOKEN: ${{ secrets.READONLY_TOKEN }}
           # Bazelisk will download bazel to here
           XDG_CACHE_HOME: ~/.cache/bazel-repo
         run: bazel --bazelrc=.github/workflows/ci.bazelrc --bazelrc=.bazelrc test ...
