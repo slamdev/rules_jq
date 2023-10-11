@@ -12,7 +12,7 @@ gazelle(
     gazelle = "gazelle_bin",
 )
 
-# This declares the release artifact users
+# This builds the release artifact used in .github/workflows/release.yaml
 pkg_tar(
     name = "slamdev_rules_jq",
     srcs = [

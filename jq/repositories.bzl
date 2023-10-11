@@ -35,7 +35,7 @@ _ATTRS = {
 def _jq_repo_impl(repository_ctx):
     repository_ctx.report_progress("Downloading JQ releases info")
     repository_ctx.download(
-        url = ["https://api.github.com/repos/stedolan/jq/releases"],
+        url = ["https://api.github.com/repos/jqlang/jq/releases"],
         output = "versions.json",
     )
     versions = repository_ctx.read("versions.json")
@@ -45,13 +45,9 @@ def _jq_repo_impl(repository_ctx):
         if version == repository_ctx.attr.jq_version:
             version_found = True
     if not version_found:
-        fail("did not find {} version in https://api.github.com/repos/stedolan/jq/releases".format(repository_ctx.attr.jq_version))
+        fail("did not find {} version in https://api.github.com/repos/jqlang/jq/releases".format(repository_ctx.attr.jq_version))
 
-    file_url = "https://github.com/stedolan/jq/releases/download/jq-{}/jq-{}".format(repository_ctx.attr.jq_version, repository_ctx.attr.platform)
-
-    # TODO remove as soon as https://github.com/stedolan/jq/issues/2386 is resolved
-    if repository_ctx.attr.platform == "osx-arm64" and repository_ctx.attr.jq_version == "1.6":
-        file_url = "https://github.com/slamdev/rules_jq/releases/download/0.0.1/jq-osx-arm64"
+    file_url = "https://github.com/jqlang/jq/releases/download/jq-{}/jq-{}".format(repository_ctx.attr.jq_version, repository_ctx.attr.platform)
 
     repository_ctx.report_progress("Downloading and extracting JQ toolchain")
     repository_ctx.download(
