@@ -23,7 +23,7 @@ jobs:
           # https://github.com/bazelbuild/rules_docker/issues/1524
           # https://github.com/bazelbuild/rules_docker/issues/1438
           # - windows-latest
-        bazel: [ 4.2.1, 5.0.0rc4 ]
+        bazel: [4.2.1, 5.0.0rc4]
     # The type of runner that the job will run on
     runs-on: ${{ matrix.os }}
 
