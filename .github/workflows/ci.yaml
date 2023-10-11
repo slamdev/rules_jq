@@ -33,7 +33,10 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-      - uses: bazelbuild/setup-bazelisk@v1
+      - uses: jwlawson/actions-setup-bazel@v1
+        with:
+          bazel-version: ${{ matrix.bazel }}
+          github-api-token: ${{ secrets.READONLY_TOKEN }}
       - name: Mount bazel action cache
         uses: actions/cache@v2
         with:
@@ -48,13 +51,7 @@ jobs:
         run: echo ${{ matrix.bazel }} > .bazelversion
       - name: Build
         shell: bash
-        env:
-          # Bazelisk will download bazel to here
-          XDG_CACHE_HOME: ~/.cache/bazel-repo
         run: bazel --bazelrc=.github/workflows/ci.bazelrc --bazelrc=.bazelrc build ...
       - name: Test
         shell: bash
-        env:
-          # Bazelisk will download bazel to here
-          XDG_CACHE_HOME: ~/.cache/bazel-repo
         run: bazel --bazelrc=.github/workflows/ci.bazelrc --bazelrc=.bazelrc test ...
