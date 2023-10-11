@@ -9,6 +9,10 @@ load(":internal_deps.bzl", "rules_jq_internal_deps")
 # Fetch deps needed only locally for development
 rules_jq_internal_deps()
 
+load("@rules_python//python:repositories.bzl", "py_repositories")
+
+py_repositories()
+
 load("//jq:repositories.bzl", "jq_register_toolchains", "rules_jq_dependencies")
 
 # Fetch our "runtime" dependencies which users need as well
