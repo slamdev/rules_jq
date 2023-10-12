@@ -1,5 +1,9 @@
 name: CI
 
+env:
+  # because it takes a loooong time
+  HOMEBREW_NO_AUTO_UPDATE: 1
+
 # Controls when the action will run.
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
@@ -23,7 +27,7 @@ jobs:
           # https://github.com/bazelbuild/rules_docker/issues/1524
           # https://github.com/bazelbuild/rules_docker/issues/1438
           # - windows-latest
-        bazel: [4.2.1, 5.0.0rc4]
+        bazel: [ 4.2.4, 5.4.1, 6.3.2 ]
     # The type of runner that the job will run on
     runs-on: ${{ matrix.os }}
 

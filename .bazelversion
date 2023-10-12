@@ -1,7 +1,6 @@
 4.2.4
 # The first line of this file is used by Bazelisk and Bazel to be sure
 # the right version of Bazel is used to build and test this repo.
-# This also defines which version is used on CI.
 #
-# Note that you should also run integration_tests against other Bazel
-# versions you support.
+# This also defines which version is used on CI and is overwritten in
+# .github/workflows/ci.yaml in a matrix build of { mac, linux } || { v4, v5, v6 }
