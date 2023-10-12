@@ -1,7 +1,7 @@
 # Declare the local Bazel workspace.
 # This is *not* included in the published distribution.
 workspace(
-    name = "slamdev_rules_jq",
+    name = "rules_jq",
 )
 
 load(":internal_deps.bzl", "rules_jq_internal_deps")
@@ -19,8 +19,8 @@ load("//jq:repositories.bzl", "jq_register_toolchains", "rules_jq_dependencies")
 rules_jq_dependencies()
 
 jq_register_toolchains(
-    name = "jq1_6",
-    jq_version = "1.6",
+    name = "jq",
+    jq_version = "1.7",
 )
 
 load("@bazel_gazelle//:deps.bzl", "gazelle_dependencies")
