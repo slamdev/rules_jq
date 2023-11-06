@@ -5,7 +5,7 @@ genrule(
     name = "actual",
     outs = ["actual.yaml"],
     cmd = "$(JQ_BIN) '.one = 1' --null-input --compact-output > $@",
-    toolchains = ["@jq1_6_toolchains//:resolved_toolchain"],
+    toolchains = ["@jq1_7_toolchains//:resolved_toolchain"],
 )
 
 write_file(

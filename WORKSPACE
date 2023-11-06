@@ -15,9 +15,13 @@ load("//jq:repositories.bzl", "jq_register_toolchains", "rules_jq_dependencies")
 rules_jq_dependencies()
 
 jq_register_toolchains(
-    name = "jq1_6",
-    jq_version = "1.6",
+    name = "jq1_7",
+    jq_version = "1.7",
 )
+
+load("@rules_pkg//:deps.bzl", "rules_pkg_dependencies")
+
+rules_pkg_dependencies()
 
 ############################################
 # Gazelle, for generating bzl_library targets
